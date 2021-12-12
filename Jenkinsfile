@@ -19,7 +19,7 @@ pipeline {
         stage('Build Docker image'){
             steps {
               
-                sh 'docker build -t  sritejakunchapu/Producer-0.0.1-SNAPSHOT.jar:latest  .'
+                sh 'docker build -t  susmithachilaka/Producer-0.0.1-SNAPSHOT.jar:latest  .'
             }
         }
 
@@ -27,21 +27,21 @@ pipeline {
             
             steps {
                  withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
-                    sh "docker login -u sritejakunchapu -p Kimt@ehy0ng"
+                    sh "docker login -u susmithachilaka -p Monster@1998"
                 }
             }                
         }
 
         stage('Docker Push'){
             steps {
-                sh 'docker push sritejakunchapu/Producer-0.0.1-SNAPSHOT.jar:latest'
+                sh 'docker push susmithachilaka/Producer-0.0.1-SNAPSHOT.jar:latest'
             }
         }
         
         stage('Docker deploy'){
             steps {
                
-                sh 'docker run -itd -p  8768:8768 sritejakunchapu/Producer-0.0.1-SNAPSHOT.jar:latest'
+                sh 'docker run -itd -p  8768:8768 susmithachilaka/Producer-0.0.1-SNAPSHOT.jar:latest'
             }
         }
 
